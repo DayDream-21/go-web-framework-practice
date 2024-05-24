@@ -2,7 +2,7 @@ package main
 
 import (
 	slick "github.com/DayDream-21/big-web-framework"
-	"github.com/DayDream-21/big-web-framework/app/views/profile"
+	"github.com/DayDream-21/big-web-framework/src/app/views/profile"
 	"log/slog"
 )
 
