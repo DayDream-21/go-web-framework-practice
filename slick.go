@@ -35,6 +35,8 @@ func New() *Slick {
 }
 
 func (s *Slick) Start(port string) error {
+	s.router.ServeFiles("/public/*filepath", http.Dir("./src/public"))
+
 	return http.ListenAndServe(port, s.router)
 }
 
