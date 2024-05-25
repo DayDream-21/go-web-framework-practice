@@ -1,13 +1,12 @@
 package main
 
 import (
-	slick "github.com/DayDream-21/big-web-framework"
 	"github.com/DayDream-21/big-web-framework/src/app/views/profile"
 	"log/slog"
 )
 
 func main() {
-	app := slick.New()
+	app := New()
 
 	app.Get("/profile", HandleUserProfile)
 
@@ -18,6 +17,6 @@ func main() {
 	}
 }
 
-func HandleUserProfile(c *slick.Context) error {
+func HandleUserProfile(c *Context) error {
 	return c.Render(profile.Index())
 }
