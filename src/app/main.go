@@ -10,6 +10,7 @@ func main() {
 	app := slick.New()
 
 	app.Get("/profile", handler.HandleProfileIndex)
+	app.Get("/dashboard", handler.HandleDashboardIndex)
 
 	slog.Info("starting server on port :3000")
 	err := app.Start(":3000")
