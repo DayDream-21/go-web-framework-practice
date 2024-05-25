@@ -12,7 +12,6 @@ func main() {
 	app.Get("/profile", handler.HandleProfileIndex)
 	app.Get("/dashboard", handler.HandleDashboardIndex)
 
-	slog.Info("starting server on port :3000")
 	err := app.Start(":3000")
 	if err != nil {
 		slog.Error("error starting server", "err", err)
