@@ -1,6 +1,8 @@
 package profile
 
-templ Index() {
+import "github.com/DayDream-21/big-web-framework/src/app/model"
+
+templ Index(user model.User) {
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -9,8 +11,17 @@ templ Index() {
         <link rel="stylesheet" href="../../../public/output.css">
         <title>User profile</title>
     </head>
-    <body class="bg-gray-600">
-        <h1 class="text-lime-500">User profile page</h1>
+    <body class="bg-slate-200">
+        <div class="container flex flex-col items-center">
+            <div class="mt-5 mb-5">
+                <h1 class="text-gray-900">User profile page</h1>
+            </div>
+            <div class="pt-5 pb-5 mx-auto px-4 bg-slate-50 rounded-lg shadow-md">
+                <div class="text-gray-900">First name: { user.FirstName }</div>
+                <div class="text-gray-900">Last name: { user.LastName }</div>
+                <div class="text-gray-900">Email: { user.Email }</div>
+            </div>
+        </div>
     </body>
     </html>
 }

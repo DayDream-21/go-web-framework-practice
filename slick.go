@@ -1,4 +1,4 @@
-package main
+package slick
 
 import (
 	"context"
