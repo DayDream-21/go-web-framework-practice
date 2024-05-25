@@ -20,11 +20,14 @@ func (c *Context) Render(component templ.Component) error {
 	return component.Render(c.ctx, c.response)
 }
 
+type Plug func(Handler) Handler
+
 type Handler func(c *Context) error
 
 type Slick struct {
 	ErrorHandler ErrorHandler
 	router       *httprouter.Router
+	middlewares  []Plug
 }
 
 func New() *Slick {
@@ -32,6 +35,10 @@ func New() *Slick {
 		ErrorHandler: defaultErrorHandler,
 		router:       httprouter.New(),
 	}
+}
+
+func (s *Slick) Plug(plugs ...Plug) {
+	s.middlewares = append(s.middlewares, plugs...)
 }
 
 func (s *Slick) Start(port string) error {
@@ -52,6 +59,10 @@ func (s *Slick) makeHTTPRouterHandler(h Handler) httprouter.Handle {
 			response: w,
 			request:  r,
 			ctx:      context.Background(),
+		}
+
+		for _, mw := range s.middlewares {
+			h = mw(h)
 		}
 
 		if err := h(ctx); err != nil {
