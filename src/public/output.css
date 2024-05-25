@@ -605,6 +605,31 @@ video {
   display: flex;
 }
 
+.w-4 {
+  width: 1rem;
+}
+
+.w-\[300px\] {
+  width: 300px;
+}
+
+.w-min {
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
+.min-w-\[1000px\] {
+  min-width: 1000px;
+}
+
+.min-w-\[500px\] {
+  min-width: 500px;
+}
+
 .flex-col {
   flex-direction: column;
 }

@@ -2,7 +2,7 @@ package profile
 
 import "github.com/DayDream-21/big-web-framework/src/app/model"
 
-templ Index(user model.User) {
+templ Index(users []model.User) {
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -12,16 +12,28 @@ templ Index(user model.User) {
         <title>User profile</title>
     </head>
     <body class="bg-slate-200">
-        <div class="container flex flex-col items-center">
-            <div class="mt-5 mb-5">
-                <h1 class="text-gray-900">User profile page</h1>
-            </div>
-            <div class="pt-5 pb-5 mx-auto px-4 bg-slate-50 rounded-lg shadow-md">
-                <div class="text-gray-900">First name: { user.FirstName }</div>
-                <div class="text-gray-900">Last name: { user.LastName }</div>
-                <div class="text-gray-900">Email: { user.Email }</div>
-            </div>
+        <div class="min-w-[500px] flex flex-col items-center">
+            @userHeaderTemplate()
+            @userTemplate(users)
         </div>
     </body>
     </html>
 }
+
+templ userHeaderTemplate() {
+   <div class="mt-5 mb-5">
+        <h1 class="text-gray-900">User profile page</h1>
+    </div>
+}
+
+
+templ userTemplate(users []model.User) {
+    for _, user := range users {
+        <div class="pt-5 pb-5 mb-5 px-4 min-w-[300px] bg-slate-50 rounded-lg shadow-md">
+            <div class="text-gray-900">First name: { user.FirstName }</div>
+            <div class="text-gray-900">Last name: { user.LastName }</div>
+            <div class="text-gray-900">Email: { user.Email }</div>
+        </div>
+    }
+}
+

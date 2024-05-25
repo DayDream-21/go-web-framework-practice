@@ -20,11 +20,18 @@ func main() {
 }
 
 func HandleUserProfile(c *slick.Context) error {
-	user := model.User{
-		FirstName: "Slava",
-		LastName:  "Mashkov",
-		Email:     "mashkov.vd@gmail.com",
+	users := []model.User{
+		model.User{
+			FirstName: "Slava",
+			LastName:  "Mashkov",
+			Email:     "mashkov.vd@gmail.com",
+		},
+		model.User{
+			FirstName: "Alex",
+			LastName:  "Starkov",
+			Email:     "starkov.am@gmail.com",
+		},
 	}
 
-	return c.Render(profile.Index(user))
+	return c.Render(profile.Index(users))
 }
