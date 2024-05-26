@@ -30,10 +30,18 @@ templ userHeaderTemplate() {
 templ userTemplate(users []model.User) {
     for _, user := range users {
         <div class="group pt-5 pb-5 mb-5 px-4 min-w-[300px] bg-slate-50 rounded-lg shadow-md hover:shadow-inner">
-            <div class="text-gray-900 group-hover:underline">First name: { user.FirstName }</div>
-            <div class="text-gray-900 group-hover:underline">Last name: { user.LastName }</div>
-            <div class="text-gray-900 group-hover:underline">Email: { user.Email }</div>
+            @userParam("First name", user.FirstName)
+            @userParam("Last name", user.LastName)
+            @userParam("Email", user.Email)
         </div>
     }
 }
+
+templ userParam(paramName string, paramValue string) {
+    <div class="flex flex-row">
+        <div class="text-blue-800 mr-2">{ paramName }:</div>
+        <div class="text-gray-900 group-hover:underline">{ paramValue }</div>
+    </div>
+}
+
 
