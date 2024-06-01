@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/DayDream-21/big-web-framework"
+	slick "github.com/DayDream-21/big-web-framework"
 	"github.com/DayDream-21/big-web-framework/src/app/handler"
 	"log/slog"
 )
@@ -21,7 +21,10 @@ func main() {
 
 func WithAuth(h slick.Handler) slick.Handler {
 	return func(c *slick.Context) error {
+		c.Set("email", "mail@gmail.com")
+
 		slog.Info("hello from the middleware")
+
 		return h(c)
 	}
 }

@@ -2,6 +2,7 @@ package slick
 
 import (
 	"context"
+	"errors"
 	"github.com/a-h/templ"
 	"github.com/julienschmidt/httprouter"
 	"log/slog"
@@ -18,6 +19,18 @@ type Context struct {
 
 func (c *Context) Render(component templ.Component) error {
 	return component.Render(c.ctx, c.response)
+}
+
+func (c *Context) Set(key string, value any) {
+	c.ctx = context.WithValue(c.ctx, key, value)
+}
+
+func (c *Context) Get(key string) (any, error) {
+	if c.ctx.Value(key) == nil {
+		return nil, errors.New("key not found")
+	}
+
+	return c.ctx.Value(key), nil
 }
 
 type Plug func(Handler) Handler
@@ -38,6 +51,8 @@ func New() *Slick {
 }
 
 func (s *Slick) Plug(plugs ...Plug) {
+	slog.Info("append plugin", slog.Any("plugs", plugs))
+
 	s.middlewares = append(s.middlewares, plugs...)
 }
 
@@ -61,8 +76,8 @@ func (s *Slick) makeHTTPRouterHandler(h Handler) httprouter.Handle {
 			ctx:      context.Background(),
 		}
 
-		for _, mw := range s.middlewares {
-			h = mw(h)
+		for i := len(s.middlewares) - 1; i >= 0; i-- {
+			h = s.middlewares[i](h)
 		}
 
 		if err := h(ctx); err != nil {
