@@ -10,8 +10,8 @@ import "context"
 import "io"
 import "bytes"
 
-import "github.com/DayDream-21/big-web-framework/src/app/model"
-import "github.com/DayDream-21/big-web-framework/src/app/view/layout"
+import "github.com/SlavaMashkov/big-web-framework/src/app/model"
+import "github.com/SlavaMashkov/big-web-framework/src/app/view/layout"
 
 func ShowIndex(childComponent templ.Component) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {

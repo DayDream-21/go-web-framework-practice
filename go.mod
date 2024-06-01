@@ -1,4 +1,4 @@
-module github.com/DayDream-21/big-web-framework
+module github.com/SlavaMashkov/big-web-framework
 
 go 1.22.0
 

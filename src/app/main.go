@@ -1,8 +1,8 @@
 package main
 
 import (
-	slick "github.com/DayDream-21/big-web-framework"
-	"github.com/DayDream-21/big-web-framework/src/app/handler"
+	slick "github.com/SlavaMashkov/big-web-framework"
+	"github.com/SlavaMashkov/big-web-framework/src/app/handler"
 	"log/slog"
 )
 

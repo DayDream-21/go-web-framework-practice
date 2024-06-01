@@ -1,9 +1,9 @@
 package handler
 
 import (
-	slick "github.com/DayDream-21/big-web-framework"
-	"github.com/DayDream-21/big-web-framework/src/app/model"
-	"github.com/DayDream-21/big-web-framework/src/app/view/profile"
+	slick "github.com/SlavaMashkov/big-web-framework"
+	"github.com/SlavaMashkov/big-web-framework/src/app/model"
+	"github.com/SlavaMashkov/big-web-framework/src/app/view/profile"
 )
 
 func HandleProfileIndex(c *slick.Context) error {
