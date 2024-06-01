@@ -12,7 +12,7 @@ templ Index(users []model.User) {
         <title>User profile</title>
     </head>
     <body class="bg-slate-200">
-        <div class="min-w-[500px] flex flex-col items-center">
+        <div class="min-w-[500px] grid grid-cols-1 gap-4 justify-items-center items-center">
             @userHeaderTemplate()
             @userTemplate(users)
         </div>
@@ -26,13 +26,14 @@ templ userHeaderTemplate() {
     </div>
 }
 
-
 templ userTemplate(users []model.User) {
     for _, user := range users {
-        <div class="group pt-5 pb-5 mb-5 px-4 min-w-[300px] bg-slate-50 rounded-lg shadow-md hover:shadow-inner">
-            @userParam("First name", user.FirstName)
-            @userParam("Last name", user.LastName)
-            @userParam("Email", user.Email)
+        <div class="group grid grid-cols-1 justify-items-center pt-5 pb-5 px-4 w-[300px] bg-slate-50 rounded-lg shadow-md hover:shadow-inner">
+            <div>
+                @userParam("First name", user.FirstName)
+                @userParam("Last name", user.LastName)
+                @userParam("Email", user.Email)
+            </div>
         </div>
     }
 }

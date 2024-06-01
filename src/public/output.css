@@ -570,12 +570,32 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
+.w-\[50\%\] {
+  width: 50%;
+}
+
+.w-\[300px\] {
+  width: 300px;
+}
+
 .min-w-\[300px\] {
   min-width: 300px;
 }
 
 .min-w-\[500px\] {
   min-width: 500px;
+}
+
+.max-w-\[800px\] {
+  max-width: 800px;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -588,6 +608,22 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-items-center {
+  justify-items: center;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.justify-self-start {
+  justify-self: start;
+}
+
+.justify-self-center {
+  justify-self: center;
 }
 
 .rounded-lg {

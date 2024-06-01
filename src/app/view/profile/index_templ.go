@@ -25,7 +25,7 @@ func Index(users []model.User) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"../../../public/output.css\"><title>User profile</title></head><body class=\"bg-slate-200\"><div class=\"min-w-[500px] flex flex-col items-center\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"../../../public/output.css\"><title>User profile</title></head><body class=\"bg-slate-200\"><div class=\"min-w-[500px] grid grid-cols-1 gap-4 justify-items-center items-center\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -86,7 +86,7 @@ func userTemplate(users []model.User) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		for _, user := range users {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"group pt-5 pb-5 mb-5 px-4 min-w-[300px] bg-slate-50 rounded-lg shadow-md hover:shadow-inner\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"group grid grid-cols-1 justify-items-center pt-5 pb-5 px-4 w-[300px] bg-slate-50 rounded-lg shadow-md hover:shadow-inner\"><div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -102,7 +102,7 @@ func userTemplate(users []model.User) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -134,7 +134,7 @@ func userParam(paramName string, paramValue string) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(paramName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/app/view/profile/index.templ`, Line: 42, Col: 51}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/app/view/profile/index.templ`, Line: 43, Col: 51}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -147,7 +147,7 @@ func userParam(paramName string, paramValue string) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(paramValue)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/app/view/profile/index.templ`, Line: 43, Col: 69}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/app/view/profile/index.templ`, Line: 44, Col: 69}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
