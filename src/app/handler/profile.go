@@ -20,5 +20,5 @@ func HandleProfileIndex(c *slick.Context) error {
 		},
 	}
 
-	return c.Render(profile.Index(users))
+	return c.Render(profile.ShowIndex(profile.Show(users)))
 }

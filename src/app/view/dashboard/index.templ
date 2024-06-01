@@ -1,5 +1,22 @@
 package dashboard
 
+import "github.com/DayDream-21/big-web-framework/src/app/view/layout"
+
+templ Show() {
+    if len(userEmail(ctx)) > 0 {
+        <h1>Dashboard page!</h1>
+       @userParam(userEmail(ctx))
+    } else {
+        <h1>Help me!</h1>
+    }
+}
+
+templ ShowIndex(childComponent templ.Component) {
+	@layout.Base() {
+		@childComponent
+	}
+}
+
 func userEmail(ctx context.Context) string {
     email, ok := ctx.Value("email").(string)
     if !ok {
@@ -11,13 +28,4 @@ func userEmail(ctx context.Context) string {
 
 templ userParam(paramValue string) {
     <div>{ paramValue }</div>
-}
-
-templ Index() {
-    if len(userEmail(ctx)) > 0 {
-        <h1>Dashboard page!</h1>
-       @userParam(userEmail(ctx))
-    } else {
-        <h1>Help me!</h1>
-    }
 }

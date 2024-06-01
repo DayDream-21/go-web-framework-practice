@@ -1,32 +1,28 @@
 package profile
 
 import "github.com/DayDream-21/big-web-framework/src/app/model"
+import "github.com/DayDream-21/big-web-framework/src/app/view/layout"
 
-templ Index(users []model.User) {
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../public/output.css">
-        <title>User profile</title>
-    </head>
-    <body class="bg-slate-200">
-        <div class="min-w-[500px] grid grid-cols-1 gap-4 justify-items-center items-center">
-            @userHeaderTemplate()
-            @userTemplate(users)
-        </div>
-    </body>
-    </html>
+templ ShowIndex(childComponent templ.Component) {
+	@layout.Base() {
+		@childComponent
+	}
+}
+
+templ Show(users []model.User) {
+    <div class="min-w-[500px] grid grid-cols-1 gap-4 justify-items-center items-center">
+        @userHeaderTemplate()
+        @usersTemplate(users)
+    </div>
 }
 
 templ userHeaderTemplate() {
    <div class="mt-5 mb-5">
         <h1 class="text-gray-900">User profile page</h1>
-    </div>
+   </div>
 }
 
-templ userTemplate(users []model.User) {
+templ usersTemplate(users []model.User) {
     for _, user := range users {
         <div class="group grid grid-cols-1 justify-items-center pt-5 pb-5 px-4 w-[300px] bg-slate-50 rounded-lg shadow-md hover:shadow-inner">
             <div>
@@ -44,5 +40,6 @@ templ userParam(paramName string, paramValue string) {
         <div class="text-gray-900 group-hover:underline">{ paramValue }</div>
     </div>
 }
+
 
 

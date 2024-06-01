@@ -6,5 +6,5 @@ import (
 )
 
 func HandleDashboardIndex(c *slick.Context) error {
-	return c.Render(dashboard.Index())
+	return c.Render(dashboard.ShowIndex(dashboard.Show()))
 }
