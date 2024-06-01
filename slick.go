@@ -51,8 +51,6 @@ func New() *Slick {
 }
 
 func (s *Slick) Plug(plugs ...Plug) {
-	slog.Info("append plugin", slog.Any("plugs", plugs))
-
 	s.middlewares = append(s.middlewares, plugs...)
 }
 
@@ -65,6 +63,8 @@ func (s *Slick) Start(port string) error {
 }
 
 func (s *Slick) Get(path string, h Handler, plugs ...Handler) {
+	slog.Info("register route", "path", path)
+
 	s.router.GET(path, s.makeHTTPRouterHandler(h))
 }
 
